@@ -145,6 +145,8 @@ func NextCoinFetchTime() time.Time {
 	return nextCoinFetchTime
 }
 func Close() {
-	close(coinFetchInterrupt)
+	if coinFetchInterrupt != nil {
+		close(coinFetchInterrupt)
+	}
 	wg.Wait()
 }
